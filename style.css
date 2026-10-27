@@ -2,3 +2,23 @@ html {
   height: 100%;
   width: 100%;
 }
+
+table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 6px;
+}
+
+td.title {
+  color: red;
+}
+
+td.body {
+  color: green;
+}
