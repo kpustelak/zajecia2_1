@@ -4,6 +4,7 @@
   const cw2 = document.getElementById("cw2");
   const cw3 = document.getElementById("cw3");
   const answer = document.getElementById("answer");
+  const select = document.getElementById("select");
 
   example.addEventListener("click", function () {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -40,6 +41,15 @@
         html += "</table>";
         answer.innerHTML = html;
       });
+  });
+
+  cw2.addEventListener("click", function () {
+    fetch("https://jsonplaceholder.typicode.com/posts/" + select.value)
+      .then((response) => response.json())
+      .then((item) => {
+        console.log(item);
+      })
+      .catch((error) => console.error(error));
   });
 
   cw3.addEventListener("click", function () {
