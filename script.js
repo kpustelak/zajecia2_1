@@ -5,6 +5,7 @@
   const cw3 = document.getElementById("cw3");
   const answer = document.getElementById("answer");
   const select = document.getElementById("select");
+  const popup = document.getElementById("popup");
 
   example.addEventListener("click", function () {
     fetch("https://jsonplaceholder.typicode.com/posts")
@@ -16,6 +17,7 @@
   });
 
   cw1.addEventListener("click", function () {
+    popup.classList.add("show");
     fetch("https://jsonplaceholder.typicode.com/posts")
       .then((response) => response.json())
       .then((array) => {
@@ -39,17 +41,28 @@
             "</tr>";
         });
         html += "</table>";
-        answer.innerHTML = html;
+        setTimeout(() => {
+          answer.innerHTML = html;
+          popup.classList.remove("show");
+        }, 2000);
       });
   });
 
   cw2.addEventListener("click", function () {
+    popup.classList.add("show");
+
     fetch("https://jsonplaceholder.typicode.com/posts/" + select.value)
       .then((response) => response.json())
       .then((item) => {
-        console.log(item);
+        setTimeout(() => {
+          console.log(item);
+          popup.classList.remove("show");
+        }, 2000);
       })
-      .catch((error) => console.error(error));
+      .catch((error) => {
+        console.error("Error:", error);
+        popup.classList.remove("show");
+      });
   });
 
   cw3.addEventListener("click", function () {
